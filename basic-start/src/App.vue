@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <ProductList @delete:product="deleteProduct" @update:product="updateProduct" :products="products"/>
     <ProductAdd @add:product="addProduct" />
+    <ProductList
+      @delete:product="deleteProduct"
+      @update:product="updateProduct"
+      :products="products"
+    />
   </div>
 </template>
 
@@ -13,60 +17,51 @@ export default {
   name: "App",
   components: {
     ProductList,
-    ProductAdd
+    ProductAdd,
   },
   data() {
     return {
-      products: [
-        {
-          id: 1,
-          categoryId: 1,
-          productName: "Classical Guitar",
-          description: "Cordoba Guitar",
-          unitPrice: 375,
-          unitsInStock: 2,
-        },
-        {
-          id: 2,
-          categoryId: 3,
-          productName: "Drum Set",
-          description: "Yamaha",
-          unitPrice: 375,
-          unitsInStock: 2,
-        },
-        {
-          id: 3,
-          categoryId:1,
-          productName: "Acoustic Guitar",
-          description: "Yamaha Guitar",
-          unitPrice: 450,
-          unitsInStock: 3,
-        },
-        {
-          id: 4,
-          categoryId: 2,
-          productName: "Piano",
-          description: "Pearl River Piano",
-          unitPrice: 8765,
-          unitsInStock: 1,
-        },
-      ],
+      products: [],
     };
   },
-  methods:{
-    deleteProduct(product){
+  mounted() {
+    this.getProducts();
+  },
+  methods: {
+    async getProducts() {
+      const response = await fetch("http://localhost:3000/products");
+      const data = await response.json();
+      this.products = data;
+    },
+    async deleteProduct(product) {
+      await fetch("http://localhost:3000/products/"+product.id, {
+        method: "DELETE",
+      });
       this.products = this.products.filter(
-        productToFilter => productToFilter.id !== product.id
-      )
+        (productToFilter) => productToFilter.id !== product.id
+      );
     },
-    updateProduct(product){
-      product;
+    async updateProduct(product) {
+      const response = await fetch("http://localhost:3000/products/"+product.id, {
+        method: "PUT",
+        body: JSON.stringify(product),
+        headers: { "Content-Type": "application/json" },
+      });
+      const updatedProduct = await response.json();
+      this.products = this.products.map(product => {
+        product.id===updatedProduct.id?updatedProduct:product
+      })
     },
-    addProduct(product){
-      const newProduct = {...product};
-      this.products = [...this.products,newProduct];
-    }
-  }
+    async addProduct(product) {
+      const response = await fetch("http://localhost:3000/products", {
+        method: "POST",
+        body: JSON.stringify(product),
+        headers: { "Content-Type": "application/json" },
+      });
+      const newProduct = await response.json();
+      this.products = [...this.products, newProduct];
+    },
+  },
 };
 </script>
 

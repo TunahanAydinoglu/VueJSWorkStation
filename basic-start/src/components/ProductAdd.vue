@@ -2,10 +2,6 @@
   <div class="product-add">
     <form class="form" @submit.prevent="handleAdd"> 
       <div class="form-group">
-        <label for="id">Id</label>
-        <input v-model="product.id" type="text" class="form-control" id="id" />
-      </div>
-      <div class="form-group">
         <label for="categoryId">Category Id</label>
         <input
           v-model="product.categoryId"
@@ -24,12 +20,12 @@
         />
       </div>
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="quentityPerUnit">Description</label>
         <input
-          v-model="product.description"
+          v-model="product.quentityPerUnit"
           type="text"
           class="form-control"
-          id="description"
+          id="quentityPerUnit"
         />
       </div>
       <div class="form-group">
@@ -61,10 +57,9 @@ export default {
   data() {
     return {
       product: {
-        id: "",
         categoryId: "",
         productName: "",
-        description: "",
+        quentityPerUnit: "",
         unitPrice: "",
         unitsInStock: "",
       },

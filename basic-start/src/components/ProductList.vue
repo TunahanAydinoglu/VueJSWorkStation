@@ -47,13 +47,13 @@
 
           <td v-if="product.id === updateItemId">
             <input
-              v-model="product.description"
+              v-model="product.quentityPerUnit"
               type="text"
               class="form-control"
-              id="description"
+              id="quentityPerUnit"
             />
           </td>
-          <td v-else>{{ product.description }}</td>
+          <td v-else>{{ product.quentityPerUnit }}</td>
 
           <td v-if="product.id === updateItemId">
             <input
@@ -131,6 +131,6 @@ export default Vue.extend({
 
 <style scoped>
 .product-list {
-  margin:10px 200px
+  margin: 10px 200px;
 }
 </style>
