@@ -1,28 +1,28 @@
 <template>
   <div class="container">
-    <h3 class="title">Product List</h3>
-    <!-- <div class="input-container">
-      <input type="text" v-model="productID">
-      <button class="button--green" @click="showProduct"> Show Product</button>
-    </div> -->
-    <p class="subtitle">Type the ID of the product you want to view.</p>
+    <h3 class="title">Edit Product</h3>
+    <p class="subtitle"> Product ID : {{ $route.params.productId }}</p>
+
+    <div class="button-container">
+      <nuxt-link :to="'/products/' + $route.params.productId" tag="a" class="button--grey">Turn Back</nuxt-link>
+    </div>
   </div>
+
 </template>
- <script>
-//   export default {
-//     data(){
-//       return {
-//         productID : null
-//       }
-//     },
-//     methods : {
-//       showProduct(){
-//         this.$router.push("/products/" + this.productID)
-//       }
-//     }
-//   }
- </script>
 <style scoped>
+
+  .button-container{
+    margin-top: 50px;
+    border: 1px solid #392;
+    background-color: #dedede;
+    padding: 10px;
+    box-shadow: 2px 3px 8px rgba(0,0,0,.1);
+    display: flex;
+    justify-content: center;
+  }
+  .button--green{
+    margin-left: 5px;
+  }
 
   .title {
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
@@ -47,5 +47,4 @@
     text-align: center;
     margin-top: 50px;
   }
-
 </style>
