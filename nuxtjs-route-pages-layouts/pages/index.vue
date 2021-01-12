@@ -1,46 +1,43 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        nuxtjs
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+   <h1 class="title">Home Page</h1>
+   <p class="subtitle">
+     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae molestias dolorem id iure eius! Explicabo error fugit dignissimos repellat quod, quo corrupti placeat sed, illum provident recusandae ut voluptates quaerat! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa autem repellendus sunt cum mollitia expedita sapiente? Accusamus, incidunt velit laboriosam atque ut mollitia quos obcaecati corporis ex ab deleniti fuga.
+   </p>
+ 
+   <div class="button-container">
+     <nuxt-link to="/products" tag="a" class="button--green">Products</nuxt-link>
+     <a href="#" class="button--green">Product</a>
+   </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+
+}
 </script>
 
-<style>
+<style scoped>
 .container {
   margin: 0 auto;
   min-height: 100vh;
+  justify-content: center;
+  text-align: center;
+  margin-top: 50px;
+}
+.button-container{
+  border: 1px solid #392;
+  background-color: #dedede;
+  padding: 10px;
+  margin-top: 50px;
+  box-shadow: 2px 3px 8px rgba(0,0,0,.1);
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
 }
-
+.button--green{
+  margin-left: 5px;
+}
 .title {
   font-family:
     'Quicksand',
@@ -54,7 +51,7 @@ export default {}
     sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 30px;
   color: #35495e;
   letter-spacing: 1px;
 }
@@ -67,7 +64,4 @@ export default {}
   padding-bottom: 15px;
 }
 
-.links {
-  padding-top: 15px;
-}
 </style>

@@ -1,0 +1,15 @@
+<template>
+  <div class="container">
+      <h3>Product details Id : {{ $route.params.productId }}</h3>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
